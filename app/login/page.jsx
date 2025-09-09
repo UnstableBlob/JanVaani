@@ -4,8 +4,8 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import logo from '../images/logo.png';
-import google from '../images/google-icon.png';
+import logo from '../../images/logo.png';
+import google from '../../images/google-icon.png';
 
 
 export default function LoginPage() {
@@ -13,8 +13,7 @@ export default function LoginPage() {
   const [formData, setFormData] = useState({
     mobile: '',
     email: '',
-    password: '',
-    confirmPassword: ''
+
   });
 
   const handleInputChange = (e) => {
@@ -31,8 +30,44 @@ export default function LoginPage() {
     console.log('Form submitted:', formData);
   };
 
+
+   const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState("");
+  const [step, setStep] = useState(1);
+  const [message, setMessage] = useState("");
+
+  const requestOtp = async () => {
+    const res = await fetch("../api/auth/request-otp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+    const data = await res.json();
+    setMessage(data.message);
+    if (res.ok) setStep(2);
+  };
+
+  const verifyOtp = async () => {
+    const res = await fetch("/api/auth/verify-otp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, otp }),
+    });
+    const data = await res.json();
+    setMessage(data.message);
+
+    if (res.ok) {
+      localStorage.setItem("token", data.token);
+      window.location.href = "/"; // redirect
+    }
+  };
   return (
-    <div className="bg-white flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4"
+      style={{
+        background:"white",
+      background: "linear-gradient(to bottom, rgba(247, 136, 10, 0.5) 0%, rgba(255, 255, 255, 1) 50%, rgba(26, 143, 62, 0.5) 100%)"
+      }}
+    >
       <Head>
         <title>JanVaani - Login</title>
         <meta name="description" content="JanVaani Civic App Login" />
@@ -51,11 +86,11 @@ export default function LoginPage() {
       {/* Login Card */}
       <div className="w-full max-w-md">
         {/* Tabs */}
-        <div className="flex bg-[#F3F3F3] rounded-full p-1 mb-6">
+        <div className="flex bg-[#BDBDBD] rounded-full p-1 mb-6">
           <button
-            className={`flex-1 py-2 px-4 rounded-full text-sm font-medium ${
+            className={`flex-1 py- 2 px-4 rounded-full text-sm font-medium ${
               activeTab === 'mobile' 
-                ? 'bg-[#C4C4C4] text-black font-bold' 
+                ? 'bg-[#FFFFFF] text-black font-bold' 
                 : 'text-[#414141]'
             }`}
             onClick={() => setActiveTab('mobile')}
@@ -65,7 +100,7 @@ export default function LoginPage() {
           <button
             className={`flex-1 py-2 px-4 rounded-full text-sm font-medium ${
               activeTab === 'email' 
-                ? 'bg-[#C4C4C4] text-black font-bold' 
+                ? 'bg-[#FFFFFF] text-black font-bold' 
                 : 'text-[#414141]'
             }`}
             onClick={() => setActiveTab('email')}
@@ -108,53 +143,16 @@ export default function LoginPage() {
             </div>
           )}
 
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Enter your password"
-              value={formData.password}
-              onChange={handleInputChange}
-              className="w-full px-4 py-3 border border-[#B2B2B2] rounded-lg placeholder-[#7A7A7A] focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-
-          <div>
-            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
-              Re-enter your Password
-            </label>
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              placeholder="Re-enter your Password"
-              value={formData.confirmPassword}
-              onChange={handleInputChange}
-              className="w-full px-4 py-3 border border-[#B2B2B2] rounded-lg placeholder-[#7A7A7A] focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
 
           <button
             type="submit"
             className="w-full bg-[#1976D2] text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition-colors"
+            onClick={requestOtp}
           >
             Continue
           </button>
         </form>
 
-        {/* Sign Up Link */}
-        <div className="text-center mt-6">
-          <p className="text-[#838383]">
-            Don't have an account?{' '}
-            <a href="#" className="text-[#1A315C] font-semibold hover:underline">
-              Sign Up
-            </a>
-          </p>
-        </div>
 
         {/* Divider */}
         <div className="flex items-center my-6">
