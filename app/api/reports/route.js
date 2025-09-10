@@ -80,3 +80,93 @@ export async function POST(req) {
     { status: 201 }
   );
 }
+
+// import { NextResponse } from "next/server";
+// import { verifySupabaseToken } from "@/app/lib/supaBaseAdmin";
+// import connectDB from "../../lib/mongodb";
+// import Report from "../../models/Report";
+// import cloudinary from "../../lib/cloudinary";
+
+// // POST - Create new report
+// export async function POST(req) {
+//   try {
+//     const authHeader = req.headers.get("authorization");
+//     if (!authHeader) {
+//       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+//     }
+
+//     const token = authHeader.split(" ")[1];
+//     const user = await verifySupabaseToken(token);
+//     if (!user) {
+//       return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+//     }
+
+//     // parse FormData
+//     const formData = await req.formData();
+//     const title = formData.get("title");
+//     const description = formData.get("description");
+//     const file = formData.get("image");
+
+//     let imageUrl = null;
+//     if (file && typeof file === "object") {
+//       // convert Blob to buffer
+//       const arrayBuffer = await file.arrayBuffer();
+//       const buffer = Buffer.from(arrayBuffer);
+
+//       // upload to Cloudinary
+//       const uploadRes = await new Promise((resolve, reject) => {
+//         const stream = cloudinary.uploader.upload_stream(
+//           { folder: "reports" },
+//           (err, result) => {
+//             if (err) reject(err);
+//             else resolve(result);
+//           }
+//         );
+//         stream.end(buffer);
+//       });
+
+//       imageUrl = uploadRes.secure_url;
+//     }
+
+//     await connectDB();
+
+//     const newReport = await Report.create({
+//       title,
+//       description,
+//       imageUrl,
+//       userId: user.id,
+//       status: "pending",
+//     });
+
+//     return NextResponse.json({ report: newReport }, { status: 201 });
+//   } catch (err) {
+//     console.error("POST /api/reports error:", err);
+//     return NextResponse.json({ error: "Server error" }, { status: 500 });
+//   }
+// }
+
+// // GET - Fetch all reports of logged-in user
+// export async function GET(req) {
+//   try {
+//     const authHeader = req.headers.get("authorization");
+//     if (!authHeader) {
+//       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+//     }
+
+//     const token = authHeader.split(" ")[1];
+//     const user = await verifySupabaseToken(token);
+//     if (!user) {
+//       return NextResponse.json({ error: "Invalid token" }, { status: 401 });
+//     }
+
+//     await connectDB();
+//     const reports = await Report.find({ userId: user.id }).sort({
+//       createdAt: -1,
+//     });
+
+//     return NextResponse.json({ reports }, { status: 200 });
+//   } catch (err) {
+//     console.error("GET /api/reports error:", err);
+//     return NextResponse.json({ error: "Server error" }, { status: 500 });
+//   }
+// }

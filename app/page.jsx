@@ -1,161 +1,3 @@
-// import React from "react";
-// import Image from "next/image";
-// import logo from '../images/logobig.png';
-// import { FaSearch,FaMicrophone } from "react-icons/fa";
-
-// const PlaceholderLogo = () => (
-//   <Image src={logo} alt="Logo" className="w-10 object-contain" />
-// );
-// const PlaceholderAvatar = () => (
-//   <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">d
-//     <span className="text-xs text-gray-600 font-bold">SM</span>
-//   </div>
-// );
-// const PlaceholderIssueImage = () => (
-//   <div className="w-12 h-12 bg-gray-200 rounded"></div>
-// );
-// const PlaceholderSpinner = () => (
-//   <div className="w-5 h-5 border-4 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
-// );
-// const PlaceholderCheck = () => (
-//   <div className="w-5 h-5 rounded-full bg-green-400 flex items-center justify-center">
-//     <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 20 20">
-//       <path d="M5 13l4 4L15 7" />
-//     </svg>
-//   </div>
-// );
-// const PlaceholderIcon = ({ children }) => (
-//   <div className="w-6 h-6 bg-gray-300 rounded flex items-center justify-center">{children}</div>
-// );
-
-// const issues = [
-//   {
-//     id: 1,
-//     status: "pending",
-//     time: "9 mins ago",
-//     title: "Pothole near Main Rd"
-//   },
-//   {
-//     id: 2,
-//     status: "resolved",
-//     time: "2 hours ago",
-//     title: "Pothole near Main Rd"
-//   },
-//   {
-//     id: 3,
-//     status: "resolved",
-//     time: "3 hours ago",
-//     title: "Pothole near Main Rd"
-//   }
-// ];
-
-// export default function CivicIssueReportingApp() {
-//   return (
-//     <div className="w-full max-w-md mx-auto bg-white min-h-screen rounded shadow-md overflow-visible relative flex flex-col">
-//       {/* Header */}
-//       <div
-//   className="flex items-center justify-between p-4 relative"
-//   style={{ position: 'relative' }}
-// >
-//   <PlaceholderLogo />
-//   <PlaceholderAvatar />
-//   <span
-//     style={{
-//       position: 'absolute',
-//       bottom: 0,
-//       left: 0,
-//       right: 0,
-//       height: '2px', // thickness of the line
-//       background: 'linear-gradient(to right, rgba(247, 136, 10, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(26, 143, 62, 1) 100%)',
-//     }}
-//   />
-//       </div>
-
-//       {/* Search Bar */}
-//       <div className="px-4 pt-5 mb-3">
-//         <div className="flex items-center bg-white rounded-lg shadow border px-3 py-2">
-//           <FaSearch className="text-black" />
-//           <input
-//             className="flex-1 bg-transparent outline-none text-gray-700 text-sm md:text-base"
-//             placeholder="Search issues"
-//             type="text"
-//           />
-//           <FaMicrophone className="text-black" />
-
-//         </div>
-//       </div>
-
-//       {/* Map Placeholder */}
-//       <div className="px-4 mb-3">
-//         <div className="w-full h-48 md:h-64 bg-gray-300 rounded-lg border border-gray-400 flex items-center justify-center text-gray-600 font-semibold">
-//           Map Placeholder
-//         </div>
-//       </div>
-
-//       {/* Buttons */}
-//       <div className="flex gap-2 justify-center pb-2 px-4">
-//         <button className="flex-1 bg-blue-600 text-white py-2 rounded-lg font-semibold shadow text-sm md:text-base">
-//           Report an issue
-//         </button>
-//         <button className="flex-1 bg-white border border-gray-300 text-gray-700 py-2 rounded-lg font-semibold shadow text-sm md:text-base">
-//           My reports
-//         </button>
-//       </div>
-
-//       {/* Recent Issues Card */}
-//       <div className="bg-#EBEAEA px-4 py-2 flex-1 overflow-auto">
-//         <div className=" rounded-lg shadow border border-black p-3 max-h-[300px] md:max-h-[400px] overflow-y-auto">
-//           <h2 className="font-bold text-lg text-black mb-2">Recent Issues</h2>
-//           {issues.map((issue) => (
-//             <div className="flex items-center mb-3 last:mb-0" key={issue.id}>
-//               <PlaceholderIssueImage />
-//               <div className="flex-1 ml-3">
-//                 <span className="font-bold text-sm text-gray-700">{issue.title}</span>
-//                 <div className="text-xs text-gray-500">{issue.time}</div>
-//               </div>
-//               {issue.status === "pending" ? <PlaceholderSpinner /> : <PlaceholderCheck />}
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-
-//       {/* Bottom Navigation Bar */}
-//       <div className="sticky bottom-0 left-0 w-full max-w-md mx-auto px-4 py-2 bg-white shadow border-t flex justify-between items-center z-20">
-//         <PlaceholderIcon>
-//           <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 20 20">
-//             <rect x="3" y="7" width="14" height="10" rx="2" />
-//             <rect x="7" y="3" width="6" height="4" />
-//           </svg>
-//         </PlaceholderIcon>
-//         <PlaceholderIcon>
-//           <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 20 20">
-//             <circle cx="10" cy="10" r="8" />
-//             <text x="10" y="14" textAnchor="middle" fontSize="10" fill="gray">!</text>
-//           </svg>
-//         </PlaceholderIcon>
-//         <div className="w-12 h-12 bg-green-500 rounded-full shadow flex items-center justify-center -mt-6 border-4 border-white">
-//           <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 20 20">
-//             <line x1="10" y1="5" x2="10" y2="15" />
-//             <line x1="5" y1="10" x2="15" y2="10" />
-//           </svg>
-//         </div>
-//         <PlaceholderIcon>
-//           <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 20 20">
-//             <path d="M10 3v1M10 16v1M4.22 4.22l.7.7M15.08 15.08l.7.7M3 10h1M16 10h1M4.22 15.08l.7-.7M15.08 4.22l.7-.7" />
-//             <circle cx="10" cy="13" r="3"/>
-//           </svg>
-//         </PlaceholderIcon>
-//         <PlaceholderIcon>
-//           <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 20 20">
-//             <circle cx="10" cy="8" r="3" />
-//             <rect x="7" y="13" width="6" height="4" rx="2"/>
-//           </svg>
-//         </PlaceholderIcon>
-//       </div>
-//     </div>
-//   );
-// }
-
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
@@ -168,6 +10,7 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 );
 
+// ---- UI placeholders ----
 const PlaceholderLogo = () => (
   <Image src={logo} alt="Logo" className="w-10 object-contain" />
 );
@@ -251,30 +94,61 @@ export default function CivicIssueReportingApp() {
   };
 
   const handleSubmit = async () => {
-    const { data } = await supabase.auth.getSession();
-    const token = data?.session?.access_token;
+    try {
+      const { data } = await supabase.auth.getSession();
+      const token = data?.session?.access_token;
 
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("description", description);
-    if (image) formData.append("image", image);
+      let imageUrl = null;
 
-    const res = await fetch("/api/reports", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${token}` },
-      body: formData,
-    });
+      // Upload image to Cloudinary if selected
+      if (image) {
+        const formData = new FormData();
+        formData.append("file", image);
+        formData.append(
+          "upload_preset",
+          process.env.NEXT_PUBLIC_CLOUDINARY_PRESET
+        );
 
-    if (res.ok) {
-      const newReport = await res.json();
-      setIssues([newReport, ...issues]);
-      setShowForm(false);
-      setTitle("");
-      setDescription("");
-      setImage(null);
-      setPreview(null);
-    } else {
-      alert("Failed to create report");
+        const uploadRes = await fetch(
+          `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+
+        const uploadData = await uploadRes.json();
+        imageUrl = uploadData.secure_url;
+      }
+
+      // Send report to API
+      const res = await fetch("/api/reports", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          title,
+          description,
+          imageUrl,
+        }),
+      });
+
+      if (res.ok) {
+        const newReport = await res.json();
+        setIssues([newReport, ...issues]);
+        setShowForm(false);
+        setTitle("");
+        setDescription("");
+        setImage(null);
+        setPreview(null);
+      } else {
+        alert("Failed to create report");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Error submitting report");
     }
   };
 
@@ -288,7 +162,7 @@ export default function CivicIssueReportingApp() {
           className="absolute bottom-0 left-0 right-0 h-[2px]"
           style={{
             background:
-              "linear-gradient(to right, rgba(247, 136, 10, 1) 0%, rgba(255,255,255,1) 50%, rgba(26,143,62,1) 100%)",
+              "linear-gradient(to right, rgba(247,136,10,1) 0%, rgba(255,255,255,1) 50%, rgba(26,143,62,1) 100%)",
           }}
         />
       </div>
@@ -349,7 +223,7 @@ export default function CivicIssueReportingApp() {
         </div>
       </div>
 
-      {/* Bottom Nav with Plus */}
+      {/* Bottom Nav */}
       <div className="sticky bottom-0 left-0 w-full max-w-md mx-auto px-4 py-2 bg-white shadow border-t flex justify-between items-center z-20">
         <PlaceholderIcon>
           <svg
@@ -415,7 +289,7 @@ export default function CivicIssueReportingApp() {
 
       {/* Report Modal */}
       {showForm && (
-        <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center z-30">
+        <div className="absolute inset-0 bg-[#00000000] bg-opacity-40 flex items-center justify-center z-30">
           <div className="bg-white p-6 rounded-lg w-11/12 max-w-md shadow-lg">
             <h2 className="text-lg font-bold mb-4">Create Report</h2>
 
@@ -472,3 +346,266 @@ export default function CivicIssueReportingApp() {
     </div>
   );
 }
+
+// "use client";
+
+// import React, { useState, useEffect } from "react";
+// import Image from "next/image";
+// import logo from "../images/logobig.png";
+// import { FaSearch, FaMicrophone, FaBell, FaUser, FaHome } from "react-icons/fa";
+// import { FaCircleCheck } from "react-icons/fa6";
+// import { IoAlertCircleSharp } from "react-icons/io5";
+// import { CiMedicalCross } from "react-icons/ci";
+// import { createClient } from "@supabase/supabase-js";
+
+// // --- Supabase client ---
+// const supabase = createClient(
+//   process.env.NEXT_PUBLIC_SUPABASE_URL,
+//   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+// );
+
+// // --- Placeholders ---
+// const PlaceholderAvatar = () => (
+//   <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+//     <span className="text-xs text-gray-600 font-bold">SM</span>
+//   </div>
+// );
+
+// const PlaceholderIssueImage = ({ src }) =>
+//   src ? (
+//     <Image src={src} alt="Issue" width={48} height={48} className="rounded" />
+//   ) : (
+//     <div className="w-12 h-12 bg-black rounded"></div>
+//   );
+
+// const PlaceholderSpinner = () => (
+//   <div className="w-5 h-5 border-4 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
+// );
+
+// export default function CivicIssueReportingApp() {
+//   const [issues, setIssues] = useState([]);
+//   const [loading, setLoading] = useState(false);
+//   const [formOpen, setFormOpen] = useState(false);
+//   const [title, setTitle] = useState("");
+//   const [description, setDescription] = useState("");
+//   const [image, setImage] = useState(null);
+
+//   // 🎤 Voice to text (browser API)
+//   const startVoiceInput = () => {
+//     const SpeechRecognition =
+//       window.SpeechRecognition || window.webkitSpeechRecognition;
+//     if (!SpeechRecognition) {
+//       alert("Speech Recognition not supported in this browser.");
+//       return;
+//     }
+
+//     const recognition = new SpeechRecognition();
+//     recognition.lang = "en-US";
+
+//     recognition.onresult = (event) => {
+//       setDescription(event.results[0][0].transcript);
+//     };
+
+//     recognition.start();
+//   };
+
+//   // 📌 Fetch user issues
+//   useEffect(() => {
+//     const fetchReports = async () => {
+//       setLoading(true);
+//       const { data } = await supabase.auth.getSession();
+//       const token = data?.session?.access_token;
+//       if (!token) return;
+
+//       const res = await fetch("/api/reports", {
+//         headers: { Authorization: `Bearer ${token}` },
+//       });
+
+//       const json = await res.json();
+//       setIssues(json.reports || []);
+//       setLoading(false);
+//     };
+//     fetchReports();
+//   }, []);
+
+//   // 📌 Handle new report submit
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     setLoading(true);
+
+//     const { data } = await supabase.auth.getSession();
+//     const token = data?.session?.access_token;
+
+//     const formData = new FormData();
+//     formData.append("title", title);
+//     formData.append("description", description);
+//     if (image) formData.append("image", image);
+
+//     const res = await fetch("/api/reports", {
+//       method: "POST",
+//       headers: { Authorization: `Bearer ${token}` },
+//       body: formData,
+//     });
+
+//     const json = await res.json();
+//     setIssues((prev) => [json.report, ...prev]);
+//     setFormOpen(false);
+//     setTitle("");
+//     setDescription("");
+//     setImage(null);
+//     setLoading(false);
+//   };
+
+//   return (
+//     <div className="w-full mx-auto bg-white min-h-screen rounded shadow-md overflow-visible relative flex flex-col">
+//       {/* Header */}
+//       <div className="flex items-center justify-between p-2 relative">
+//         <Image src={logo} alt="Logo" className="w-10 object-contain" />
+//         <PlaceholderAvatar />
+//         <span
+//           style={{
+//             position: "absolute",
+//             bottom: 0,
+//             left: 0,
+//             right: 0,
+//             height: "3px",
+//             background:
+//               "linear-gradient(to right, rgba(247,136,10,1) 0%, rgba(255,255,255,1) 50%, rgba(26,143,62,1) 100%)",
+//           }}
+//         />
+//       </div>
+
+//       {/* Search Bar */}
+//       <div className="px-4 pt-5 mb-3">
+//         <div className="flex items-center bg-white rounded-lg shadow border px-3 py-2">
+//           <FaSearch className="text-black" />
+//           <input
+//             className="flex-1 bg-transparent outline-none text-gray-700 text-sm md:text-base"
+//             placeholder="Search issues"
+//             type="text"
+//           />
+//           <FaMicrophone className="text-black" />
+//         </div>
+//       </div>
+
+//       {/* Map Placeholder */}
+//       <div className="px-4 mb-3">
+//         <div className="w-full h-48 md:h-64 bg-gray-300 rounded-lg border border-gray-400 flex items-center justify-center text-gray-600 font-semibold">
+//           Map Placeholder
+//         </div>
+//       </div>
+
+//       {/* Buttons */}
+//       <div className="flex gap-2 justify-center pb-2 px-4">
+//         <button
+//           onClick={() => setFormOpen(true)}
+//           className="flex-1 bg-blue-600 text-white py-2 rounded-lg font-semibold shadow text-sm md:text-base"
+//         >
+//           Report an issue
+//         </button>
+//         <button className="flex-1 bg-white border border-gray-300 text-gray-700 py-2 rounded-lg font-semibold shadow text-sm md:text-base">
+//           My reports
+//         </button>
+//       </div>
+
+//       {/* Report Form */}
+//       {formOpen && (
+//         <form
+//           onSubmit={handleSubmit}
+//           className="p-4 bg-gray-100 rounded-lg mx-4 mb-4 shadow"
+//         >
+//           <input
+//             type="text"
+//             placeholder="Title"
+//             className="w-full mb-2 px-3 py-2 border rounded"
+//             value={title}
+//             onChange={(e) => setTitle(e.target.value)}
+//             required
+//           />
+//           <textarea
+//             placeholder="Description"
+//             className="w-full mb-2 px-3 py-2 border rounded"
+//             value={description}
+//             onChange={(e) => setDescription(e.target.value)}
+//             required
+//           />
+//           <input
+//             type="file"
+//             accept="image/*"
+//             className="mb-2"
+//             onChange={(e) => setImage(e.target.files?.[0] || null)}
+//           />
+//           <button
+//             type="button"
+//             onClick={startVoiceInput}
+//             className="mb-2 px-3 py-1 bg-green-500 text-white rounded"
+//           >
+//             🎤 Speak
+//           </button>
+//           <button
+//             type="submit"
+//             disabled={loading}
+//             className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold shadow"
+//           >
+//             {loading ? "Submitting..." : "Submit"}
+//           </button>
+//         </form>
+//       )}
+
+//       {/* Recent Issues */}
+//       <div className="px-4 py-2 flex-1 overflow-auto">
+//         <div
+//           className="rounded-lg shadow border border-black p-5 max-h-[300px] md:max-h-[400px] overflow-y-auto"
+//           style={{ backgroundColor: "#EBEAEA" }}
+//         >
+//           <h2 className="font-bold text-lg text-black mb-2">Recent Issues</h2>
+//           {loading && <p>Loading...</p>}
+//           {!loading &&
+//             issues.map((issue) => (
+//               <div className="flex items-center mb-3 last:mb-0" key={issue._id}>
+//                 <PlaceholderIssueImage src={issue.imageUrl} />
+//                 <div className="flex-1 ml-3">
+//                   <span className="font-bold text-sm text-gray-700">
+//                     {issue.title}
+//                   </span>
+//                   <div className="text-xs text-gray-500">
+//                     {issue.description}
+//                   </div>
+//                 </div>
+//                 {issue.status === "pending" ? (
+//                   <PlaceholderSpinner />
+//                 ) : (
+//                   <FaCircleCheck className="text-[#3C9718]" />
+//                 )}
+//               </div>
+//             ))}
+//         </div>
+//       </div>
+
+//       {/* Bottom Navigation */}
+//       <div className="sticky bottom-5 left-0 w-full max-w-xs mx-auto px-1 py-1 flex justify-between items-center z-20 bg-[linear-gradient(to_right,_rgba(247,_136,_10,_1)_0%,_rgba(255,_255,_255,_1)_50%,_rgba(26,_143,_62,_1)_100%)] rounded-full shadow">
+//         <div className="w-full max-w-sm mx-auto px-4 py-2 bg-white flex justify-between items-center z-20 rounded-full shadow">
+//           <FaHome
+//             className="text-black"
+//             style={{ width: "30px", height: "30px" }}
+//           />
+//           <IoAlertCircleSharp
+//             className="text-black"
+//             style={{ width: "30px", height: "30px" }}
+//           />
+//           <div className="w-8 h-8 transform scale-200 bg-[#009688] rounded-full shadow flex items-center justify-center">
+//             <CiMedicalCross className="text-white" />
+//           </div>
+//           <FaBell
+//             className="text-black"
+//             style={{ width: "30px", height: "30px" }}
+//           />
+//           <FaUser
+//             className="text-black"
+//             style={{ width: "30px", height: "30px" }}
+//           />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
