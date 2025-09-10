@@ -47,7 +47,7 @@ const issues = [
 
 export default function CivicIssueReportingApp() {
   return (
-    <div className="w-full max-w-md mx-auto bg-white min-h-screen rounded shadow-md overflow-visible relative flex flex-col">
+    <div className="w-full mx-auto bg-white min-h-screen rounded shadow-md overflow-visible relative flex flex-col">
       {/* Header */}
       <div
   className="flex items-center justify-between p-2 relative"
