@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import logo from '../images/logobig.png';
+import logo from '../../images/logobig.png';
 import { FaSearch,FaMicrophone,FaBell,FaUser, FaHome} from "react-icons/fa";
 import { FaCircleCheck } from "react-icons/fa6";
 
@@ -8,21 +8,19 @@ import { IoAlertCircleSharp } from "react-icons/io5";
 import { CiMedicalCross } from "react-icons/ci";
 
 
-
-
-
-
 const PlaceholderAvatar = () => (
   <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">d
     <span className="text-xs text-gray-600 font-bold">SM</span>
   </div>
 );
+
 const PlaceholderIssueImage = () => (
   <div className="w-12 h-12 bg-black rounded"></div>
 );
 const PlaceholderSpinner = () => (
   <div className="w-5 h-5 border-4 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
 );
+
 
 const issues = [
   {
@@ -45,7 +43,9 @@ const issues = [
   }
 ];
 
-export default function CivicIssueReportingApp() {
+
+
+export default function Myreports() {
   return (
     <div className="w-full max-w-md mx-auto bg-white min-h-screen rounded shadow-md overflow-visible relative flex flex-col">
       {/* Header */}
@@ -68,38 +68,6 @@ export default function CivicIssueReportingApp() {
     </div>
 
 
-
-      {/* Search Bar */}
-      <div className="px-4 pt-5 mb-3">
-        <div className="flex items-center bg-white rounded-lg shadow border px-3 py-2">
-          <FaSearch className="text-black" />
-          <input
-            className="flex-1 bg-transparent outline-none text-gray-700 text-sm md:text-base"
-            placeholder="Search issues"
-            type="text"
-          />
-          <FaMicrophone className="text-black" />
-            
-        </div>
-      </div>
-
-      {/* Map Placeholder */}
-      <div className="px-4 mb-3">
-        <div className="w-full h-48 md:h-64 bg-gray-300 rounded-lg border border-gray-400 flex items-center justify-center text-gray-600 font-semibold">
-          Map Placeholder
-        </div>
-      </div>
-
-      {/* Buttons */}
-      <div className="flex gap-2 justify-center pb-2 px-4">
-        <button className="flex-1 bg-blue-600 text-white py-2 rounded-lg font-semibold shadow text-sm md:text-base">
-          Report an issue
-        </button>
-        <button className="flex-1 bg-white border border-gray-300 text-gray-700 py-2 rounded-lg font-semibold shadow text-sm md:text-base">
-          My reports
-        </button>
-      </div>
-
       {/* Recent Issues Card */}
       <div className="px-4 py-2 flex-1 overflow-auto" >
         <div 
@@ -119,21 +87,21 @@ export default function CivicIssueReportingApp() {
           ))}
         </div>
       </div>
-
-
-      {/* Bottom Navigation Bar */}
-
-  <div className="sticky bottom-5 left-0 w-full max-w-xs mx-auto px-1 py-1 flex justify-between items-center z-20 bg-[linear-gradient(to_right,_rgba(247,_136,_10,_1)_0%,_rgba(255,_255,_255,_1)_50%,_rgba(26,_143,_62,_1)_100%)] rounded-full shadow">
-    <div className="w-full max-w-sm mx-auto px-4 py-2 bg-white flex justify-between items-center z-20 rounded-full shadow">
-      <FaHome className="text-black" style={{ width: '30px', height: '30px' }} />
-      <IoAlertCircleSharp className="text-black" style={{ width: '30px', height: '30px' }} />
-      <div className="w-8 h-8 transform scale-200 bg-[#009688] rounded-full shadow flex items-center justify-center">
-       <CiMedicalCross className="text-white" />
+    
+     {/* Bottom Navigation Bar */}
+    
+      <div className="sticky bottom-5 left-0 w-full max-w-xs mx-auto px-1 py-1 flex justify-between items-center z-20 bg-[linear-gradient(to_right,_rgba(247,_136,_10,_1)_0%,_rgba(255,_255,_255,_1)_50%,_rgba(26,_143,_62,_1)_100%)] rounded-full shadow">
+        <div className="w-full max-w-sm mx-auto px-4 py-2 bg-white flex justify-between items-center z-20 rounded-full shadow">
+          <FaHome className="text-black" style={{ width: '30px', height: '30px' }} />
+          <IoAlertCircleSharp className="text-black" style={{ width: '30px', height: '30px' }} />
+          <div className="w-8 h-8 transform scale-200 bg-[#009688] rounded-full shadow flex items-center justify-center">
+           <CiMedicalCross className="text-white" />
+          </div>
+          <FaBell className="text-black" style={{ width: '30px', height: '30px' }} />
+          <FaUser className="text-black" style={{ width: '30px', height: '30px' }} />
+        </div>
       </div>
-      <FaBell className="text-black" style={{ width: '30px', height: '30px' }} />
-      <FaUser className="text-black" style={{ width: '30px', height: '30px' }} />
-    </div>
-  </div>
-</div> 
-  );
-}
+    </div> 
+      );
+    }
+    
