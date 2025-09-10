@@ -2,7 +2,10 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import logo from "../images/logobig.png";
-import { FaSearch, FaMicrophone } from "react-icons/fa";
+import { FaSearch,FaMicrophone,FaBell,FaUser, FaHome} from "react-icons/fa";
+import { FaCircleCheck } from "react-icons/fa6";
+import { IoAlertCircleSharp } from "react-icons/io5";
+import { CiMedicalCross } from "react-icons/ci";
 import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
@@ -223,69 +226,33 @@ export default function CivicIssueReportingApp() {
         </div>
       </div>
 
-      {/* Bottom Nav */}
-      <div className="sticky bottom-0 left-0 w-full max-w-md mx-auto px-4 py-2 bg-white shadow border-t flex justify-between items-center z-20">
-        <PlaceholderIcon>
-          <svg
-            className="w-4 h-4 text-gray-500"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <rect x="3" y="7" width="14" height="10" rx="2" />
-            <rect x="7" y="3" width="6" height="4" />
-          </svg>
-        </PlaceholderIcon>
-        <PlaceholderIcon>
-          <svg
-            className="w-4 h-4 text-gray-500"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <circle cx="10" cy="10" r="8" />
-            <text x="10" y="14" textAnchor="middle" fontSize="10" fill="gray">
-              !
-            </text>
-          </svg>
-        </PlaceholderIcon>
-        <div
-          className="w-12 h-12 bg-green-500 rounded-full shadow flex items-center justify-center -mt-6 border-4 border-white cursor-pointer"
-          onClick={() => setShowForm(true)}
-        >
-          <svg
-            className="w-6 h-6 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <line x1="10" y1="5" x2="10" y2="15" />
-            <line x1="5" y1="10" x2="15" y2="10" />
-          </svg>
-        </div>
-        <PlaceholderIcon>
-          <svg
-            className="w-4 h-4 text-gray-500"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path d="M10 3v1M10 16v1M4.22 4.22l.7.7M15.08 15.08l.7.7M3 10h1M16 10h1M4.22 15.08l.7-.7M15.08 4.22l.7-.7" />
-            <circle cx="10" cy="13" r="3" />
-          </svg>
-        </PlaceholderIcon>
-        <PlaceholderIcon>
-          <svg
-            className="w-4 h-4 text-gray-500"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <circle cx="10" cy="8" r="3" />
-            <rect x="7" y="13" width="6" height="4" rx="2" />
-          </svg>
-        </PlaceholderIcon>
-      </div>
+      {/* Bottom Navigation Bar */}
+
+<div className="sticky bottom-5 left-0 w-full max-w-xs mx-auto px-1 py-1 flex justify-between items-center z-20 bg-[linear-gradient(to_right,_rgba(247,_136,_10,_1)_0%,_rgba(255,_255,_255,_1)_50%,_rgba(26,_143,_62,_1)_100%)] rounded-full shadow">
+
+<div className="w-full max-w-sm mx-auto px-4 py-2 bg-white flex justify-between items-center z-20 rounded-full shadow">
+
+<FaHome className="text-black" style={{ width: '30px', height: '30px' }} />
+
+<IoAlertCircleSharp className="text-black" style={{ width: '30px', height: '30px' }} />
+
+<div
+
+onClick={() => setShowForm(true)}
+
+className="w-8 h-8 transform scale-200 bg-[#009688] rounded-full shadow flex items-center justify-center">
+
+<CiMedicalCross className="text-white" />
+
+</div>
+
+<FaBell className="text-black" style={{ width: '30px', height: '30px' }} />
+
+<FaUser className="text-black" style={{ width: '30px', height: '30px' }} />
+
+</div>
+
+</div>
 
       {/* Report Modal */}
       {showForm && (
