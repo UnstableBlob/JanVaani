@@ -1,10 +1,14 @@
 import React from "react";
+import Image from "next/image";
+import logo from '../images/logobig.png';
+import { FaSearch,FaMicrophone } from "react-icons/fa";
+
 
 const PlaceholderLogo = () => (
-  <div className="w-8 h-8 bg-gray-300 rounded"></div>
+  <Image src={logo} alt="Logo" className="w-10 object-contain" />
 );
 const PlaceholderAvatar = () => (
-  <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+  <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">d
     <span className="text-xs text-gray-600 font-bold">SM</span>
   </div>
 );
@@ -50,25 +54,37 @@ export default function CivicIssueReportingApp() {
   return (
     <div className="w-full max-w-md mx-auto bg-white min-h-screen rounded shadow-md overflow-visible relative flex flex-col">
       {/* Header */}
-      <div className="flex items-center justify-between p-4">
-        <PlaceholderLogo />
-        <PlaceholderAvatar />
+      <div
+  className="flex items-center justify-between p-4 relative"
+  style={{ position: 'relative' }}
+>
+  <PlaceholderLogo />
+  <PlaceholderAvatar />
+  <span
+    style={{
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+      right: 0,
+      height: '2px', // thickness of the line
+      background: 'linear-gradient(to right, rgba(247, 136, 10, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(26, 143, 62, 1) 100%)',
+    }}
+  />
       </div>
 
+
+
       {/* Search Bar */}
-      <div className="px-4 mb-3">
+      <div className="px-4 pt-5 mb-3">
         <div className="flex items-center bg-white rounded-lg shadow border px-3 py-2">
+          <FaSearch className="text-black" />
           <input
             className="flex-1 bg-transparent outline-none text-gray-700 text-sm md:text-base"
             placeholder="Search issues"
             type="text"
           />
-          <PlaceholderIcon>
-            <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 20 20">
-              <circle cx="9" cy="9" r="7"/>
-              <line x1="15" y1="15" x2="19" y2="19" />
-            </svg>
-          </PlaceholderIcon>
+          <FaMicrophone className="text-black" />
+            
         </div>
       </div>
 
@@ -90,9 +106,9 @@ export default function CivicIssueReportingApp() {
       </div>
 
       {/* Recent Issues Card */}
-      <div className="px-4 py-2 flex-1 overflow-auto">
-        <div className="bg-white rounded-lg shadow border p-3 max-h-[300px] md:max-h-[400px] overflow-y-auto">
-          <h2 className="font-bold text-lg mb-2">Recent Issues</h2>
+      <div className="bg-#EBEAEA px-4 py-2 flex-1 overflow-auto">
+        <div className=" rounded-lg shadow border border-black p-3 max-h-[300px] md:max-h-[400px] overflow-y-auto">
+          <h2 className="font-bold text-lg text-black mb-2">Recent Issues</h2>
           {issues.map((issue) => (
             <div className="flex items-center mb-3 last:mb-0" key={issue.id}>
               <PlaceholderIssueImage />
