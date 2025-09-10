@@ -1,24 +1,35 @@
+
+import Image from "next/image";
+import logo from "../../../images/logobig.png";
 import { FaSearch,FaMicrophone,FaBell,FaUser, FaHome} from "react-icons/fa";
 import { FaCircleCheck } from "react-icons/fa6";
 import { IoAlertCircleSharp } from "react-icons/io5";
 import { CiMedicalCross } from "react-icons/ci";
 
 
+
+const PlaceholderAvatar = () => (
+  <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+    <span className="text-xs text-gray-600 font-bold">SM</span>
+  </div>
+);
+
 export default function ReportStatus() {
   return (
     <div className="max-w-md mx-auto min-h-screen bg-white font-mulish flex flex-col">
       {/* Header */}
-      <header className="flex justify-between items-center p-4 pt-5 pb-1">
-        <div className="w-24 h-7 bg-gray-300 rounded flex items-center justify-center font-bold text-gray-600">
-          Logo
-        </div>
-        <div className="w-9 h-9 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-semibold text-lg">
-          SM
-        </div>
-      </header>
+      <div className="flex items-center justify-between p-4 relative">
+        <Image src={logo} alt="Logo" className="w-10 object-contain" />
+        <PlaceholderAvatar />
+        <span
+          className="absolute bottom-0 left-0 right-0 h-[2px]"
+          style={{
+            background:
+              "linear-gradient(to right, rgba(247,136,10,1) 0%, rgba(255,255,255,1) 50%, rgba(26,143,62,1) 100%)",
+          }}
+        />
+      </div>
 
-      {/* Gradient line below header */}
-      <div className="w-full h-1.5 bg-gradient-to-r from-yellow-400 to-green-500" />
 
       <main className="flex-grow px-4 pt-4 pb-20">
         {/* Report Title and Meta */}
