@@ -16,7 +16,7 @@ const PlaceholderAvatar = () => (
 
 export default function ReportStatus() {
   return (
-    <div className="max-w-md mx-auto min-h-screen bg-white font-mulish flex flex-col">
+    <div className="max-w-md mx-auto bg-white font-mulish flex flex-col">
       {/* Header */}
       {/* <div className="flex items-center justify-between p-4 relative">
         <Image src={logo} alt="Logo" className="w-10 object-contain" />
@@ -63,7 +63,7 @@ export default function ReportStatus() {
           </div>
         </nav>
 
-        {/* Status Descriptions */}
+        {/* Status Descriptions
         <section className="mt-8 space-y-6 text-gray-700 text-base">
           <div>
             <p className="font-bold text-gray-900">Sent</p>
@@ -83,12 +83,12 @@ export default function ReportStatus() {
               The problem has been fixed. Thank you for helping improve your community!
             </p>
           </div>
-        </section>
+        </section> */}
       </main>
 
-      {/* Bottom Navigation Bar
+      {/* Bottom Navigation Bar */}
           
-            <div className="sticky bottom-5 left-0 w-full max-w-xs mx-auto px-1 py-1 flex justify-between items-center z-20 bg-[linear-gradient(to_right,_rgba(247,_136,_10,_1)_0%,_rgba(255,_255,_255,_1)_50%,_rgba(26,_143,_62,_1)_100%)] rounded-full shadow">
+            {/* <div className="sticky bottom-5 left-0 w-full max-w-xs mx-auto px-1 py-1 flex justify-between items-center z-20 bg-[linear-gradient(to_right,_rgba(247,_136,_10,_1)_0%,_rgba(255,_255,_255,_1)_50%,_rgba(26,_143,_62,_1)_100%)] rounded-full shadow">
               <div className="w-full max-w-sm mx-auto px-4 py-2 bg-white flex justify-between items-center z-20 rounded-full shadow">
                 <FaHome className="text-black" style={{ width: '30px', height: '30px' }} />
                 <IoAlertCircleSharp className="text-black" style={{ width: '30px', height: '30px' }} />
