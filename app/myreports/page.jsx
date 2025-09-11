@@ -9,6 +9,8 @@ import { IoAlertCircleSharp } from "react-icons/io5";
 import { CiMedicalCross } from "react-icons/ci";
 import { createClient } from "@supabase/supabase-js";
 import ReportStatus from "./testreport/page";
+import VoiceAssistant from "../components/voiceassistant";
+
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -200,61 +202,60 @@ export default function Myreports() {
           </div>
         </div>
         {/* Report Modal */}
-        {showForm && (
-          <div className="absolute inset-0 bg-[#00000000] bg-opacity-40 flex items-center justify-center z-30">
-            <div className="bg-white p-6 rounded-lg w-11/12 max-w-md shadow-lg">
-              <h2 className="text-lg text-black font-bold mb-4">Create Report</h2>
-              <input
-                type="text"
-                placeholder="Title"
-                className="w-full border border-black p-2 mb-3 rounded text-black"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
-              <textarea
-                placeholder="Description"
-                className="w-full border border-black p-2 mb-3 rounded text-black"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-              <div className="w-full flex items-center justify-center gap-2 mb-3 text-gray-500">
-                <input
-                  className="w-full border border-black p-2 rounded "
-                  type="file"
-                  accept="image/*"
-                  onChange={handleFileChange}
-                />
-                <button
-                  onClick={handleVoiceInput}
-                  className="p-2 bg-gray-200 rounded-full"
-                >
-                  🎙️
-                </button>
-              </div>
-              {preview && (
-                <img
-                  src={preview}
-                  alt="Preview"
-                  className="w-full h-40 object-cover mb-3 rounded"
-                />
+        {/* Report Modal */}
+              {showForm && (
+                <div className="absolute inset-0 bg-[#00000000] bg-opacity-40 flex items-center justify-center z-30">
+                  <div className="bg-white p-6 rounded-lg w-11/12 max-w-md shadow-lg">
+                    <h2 className="text-lg text-black font-bold mb-4">Create Report</h2>
+        
+                    <input
+                      type="text"
+                      placeholder="Title"
+                      className="w-full border border-black p-2 mb-3 rounded text-black"
+                      value={title}
+                      onChange={(e) => setTitle(e.target.value)}
+                    />
+        
+                    <textarea
+                      placeholder="Description"
+                      className="w-full border border-black p-2 mb-3 rounded text-black"
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
+                    />
+                    <input
+                          className="w-full border border-black p-2 rounded "
+                          type="file"
+                          accept="image/*"
+                          onChange={handleFileChange}
+                        />
+        
+                    <VoiceAssistant/>
+        
+                    {preview && (
+                      <img
+                        src={preview}
+                        alt="Preview"
+                        className="w-full h-40 object-cover mb-3 rounded"
+                      />
+                    )}
+        
+                    <div className="flex justify-center gap-2">
+                      <button
+                        onClick={() => setShowForm(false)}
+                        className="px-4 py-2 bg-gray-300 rounded text-black"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        onClick={handleSubmit}
+                        className="px-4 py-2 bg-green-500 text-white rounded"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </div>
+                </div>
               )}
-              <div className="flex justify-center gap-2">
-                <button
-                  onClick={() => setShowForm(false)}
-                  className="px-4 py-2 bg-gray-300 rounded text-black"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={handleSubmit}
-                  className="px-4 py-2 bg-green-500 text-white rounded"
-                >
-                  Submit
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
