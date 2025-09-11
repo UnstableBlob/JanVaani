@@ -7,6 +7,19 @@ import logo from "../../images/logobig.png";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 
+// Leaflet imports
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+
+// Fix Leaflet marker icon path issues with Next.js
+import L from 'leaflet';
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+});
+
 
 const PlaceholderAvatar = () => (
   <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
@@ -83,18 +96,26 @@ const [isOpen, setIsOpen] = useState(false);
         />
       </div>
 
-      <div className="px-4 mb-3 pt-4 ">
-        <div className="w-full flex-col h-48 md:h-64 bg-gray-300 rounded-lg border border-gray-400 flex items-center justify-center text-gray-600 font-semibold">
-          Map Placeholder
-        <div className="mb-10 flex justify-center pt-5">
-          <button className="bg-blue-500 text-white px-8 py-2 rounded-full font-medium">
-            View Map
-          </button>
-        </div>
+      {/* Leaflet Map replacing placeholder */}
+        <div className="px-4 mb-3 pt-4">
+          <MapContainer center={[23.3441, 85.3096]} zoom={13} scrollWheelZoom={false} className="w-full h-48 md:h-64 rounded-lg border border-gray-400">
+            <TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            />
+            <Marker position={[23.3441, 85.3096]}>
+                <Popup>
+                Ranchi, Jharkhand, India
+                </Popup>
+            </Marker>
+            </MapContainer>
 
+          <div className="mb-10 flex justify-center pt-5">
+            <button className="bg-blue-500 text-white px-8 py-2 rounded-full font-medium">
+              View Map
+            </button>
+          </div>
         </div>
-        
-      </div>
 
         {/* Dashboard Boxes */}
         <div className="grid grid-cols-2 gap-8 max-w-3xl mx-auto text-black">
