@@ -1,12 +1,14 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { useRouter } from 'next/navigation';
 import logo from "../images/logobig.png";
 import { FaSearch,FaMicrophone,FaBell,FaUser, FaHome} from "react-icons/fa";
 import { FaCircleCheck } from "react-icons/fa6";
 import { IoAlertCircleSharp } from "react-icons/io5";
 import { CiMedicalCross } from "react-icons/ci";
 import { createClient } from "@supabase/supabase-js";
+import VoiceAssistant from "./components/voiceassistant";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -86,15 +88,15 @@ export default function CivicIssueReportingApp() {
     setPreview(URL.createObjectURL(file));
   };
 
-  const handleVoiceInput = () => {
-    const recognition = new (window.SpeechRecognition ||
-      window.webkitSpeechRecognition)();
-    recognition.lang = "en-US";
-    recognition.onresult = (event) => {
-      setDescription(event.results[0][0].transcript);
-    };
-    recognition.start();
-  };
+  // const handleVoiceInput = () => {
+  //   const recognition = new (window.SpeechRecognition ||
+  //     window.webkitSpeechRecognition)();
+  //   recognition.lang = "en-US";
+  //   recognition.onresult = (event) => {
+  //     setDescription(event.results[0][0].transcript);
+  //   };
+  //   recognition.start();
+  // };
 
   const handleSubmit = async () => {
     try {
@@ -155,10 +157,13 @@ export default function CivicIssueReportingApp() {
     }
   };
 
+    const router = useRouter();
+
+
   return (
-    <div className="w-full max-w-md mx-auto bg-white min-h-screen rounded shadow-md flex flex-col relative">
+    <div className="w-full mx-auto bg-white min-h-screen rounded shadow-md flex flex-col relative">
       {/* Header */}
-      <div className="flex items-center justify-between p-4 relative">
+      <div className="flex items-center justify-between p-2 relative">
         <PlaceholderLogo />
         <PlaceholderAvatar />
         <span
@@ -169,6 +174,8 @@ export default function CivicIssueReportingApp() {
           }}
         />
       </div>
+      <div className="w-full max-w-2xl mx-auto bg-white min-h-screen flex flex-col relative">
+      
 
       {/* Search Bar */}
       <div className="px-4 pt-5 mb-3">
@@ -198,7 +205,8 @@ export default function CivicIssueReportingApp() {
         >
           Report an issue
         </button>
-        <button className="flex-1 bg-white border border-gray-300 text-gray-700 py-2 rounded-lg font-semibold shadow text-sm md:text-base">
+        <button className="flex-1 bg-white border border-gray-300 text-gray-700 py-2 rounded-lg font-semibold shadow text-sm md:text-base"
+        onClick={() => router.push('/myreports')}>
           My reports
         </button>
       </div>
@@ -228,62 +236,54 @@ export default function CivicIssueReportingApp() {
 
       {/* Bottom Navigation Bar */}
 
-<div className="sticky bottom-5 left-0 w-full max-w-xs mx-auto px-1 py-1 flex justify-between items-center z-20 bg-[linear-gradient(to_right,_rgba(247,_136,_10,_1)_0%,_rgba(255,_255,_255,_1)_50%,_rgba(26,_143,_62,_1)_100%)] rounded-full shadow">
+        <div className="sticky bottom-5 left-0 w-full max-w-xs mx-auto px-1 py-1 flex justify-between items-center z-20 bg-[linear-gradient(to_right,_rgba(247,_136,_10,_1)_0%,_rgba(255,_255,_255,_1)_50%,_rgba(26,_143,_62,_1)_100%)] rounded-full shadow">
 
-<div className="w-full max-w-sm mx-auto px-4 py-2 bg-white flex justify-between items-center z-20 rounded-full shadow">
+        <div className="w-full max-w-sm mx-auto px-4 py-2 bg-white flex justify-between items-center z-20 rounded-full shadow">
 
-<FaHome className="text-black" style={{ width: '30px', height: '30px' }} />
+        <FaHome className="text-black" style={{ width: '30px', height: '30px' }} />
 
-<IoAlertCircleSharp className="text-black" style={{ width: '30px', height: '30px' }} />
+        <IoAlertCircleSharp className="text-black" style={{ width: '30px', height: '30px' }} />
 
-<div
+        <div
 
-onClick={() => setShowForm(true)}
+        onClick={() => setShowForm(true)}
 
-className="w-8 h-8 transform scale-200 bg-[#009688] rounded-full shadow flex items-center justify-center">
+        className="w-8 h-8 transform scale-200 bg-[#009688] rounded-full shadow flex items-center justify-center">
 
-<CiMedicalCross className="text-white" />
+        <CiMedicalCross className="text-white" />
 
-</div>
+        </div>
 
-<FaBell className="text-black" style={{ width: '30px', height: '30px' }} />
+        <FaBell className="text-black" style={{ width: '30px', height: '30px' }} />
 
-<FaUser className="text-black" style={{ width: '30px', height: '30px' }} />
+        <FaUser className="text-black" style={{ width: '30px', height: '30px' }} />
 
-</div>
+        </div>
 
-</div>
+        </div>
 
       {/* Report Modal */}
       {showForm && (
         <div className="absolute inset-0 bg-[#00000000] bg-opacity-40 flex items-center justify-center z-30">
           <div className="bg-white p-6 rounded-lg w-11/12 max-w-md shadow-lg">
-            <h2 className="text-lg font-bold mb-4">Create Report</h2>
+            <h2 className="text-lg text-black font-bold mb-4">Create Report</h2>
 
             <input
               type="text"
               placeholder="Title"
-              className="w-full border p-2 mb-3 rounded"
+              className="w-full border border-black p-2 mb-3 rounded text-black"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
 
             <textarea
               placeholder="Description"
-              className="w-full border p-2 mb-3 rounded"
+              className="w-full border border-black p-2 mb-3 rounded text-black"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
 
-            <div className="flex items-center gap-2 mb-3">
-              <input type="file" accept="image/*" onChange={handleFileChange} />
-              <button
-                onClick={handleVoiceInput}
-                className="p-2 bg-gray-200 rounded-full"
-              >
-                🎙️
-              </button>
-            </div>
+            <VoiceAssistant/>
 
             {preview && (
               <img
@@ -293,10 +293,10 @@ className="w-8 h-8 transform scale-200 bg-[#009688] rounded-full shadow flex ite
               />
             )}
 
-            <div className="flex justify-end gap-2">
+            <div className="flex justify-center gap-2">
               <button
                 onClick={() => setShowForm(false)}
-                className="px-4 py-2 bg-gray-300 rounded"
+                className="px-4 py-2 bg-gray-300 rounded text-black"
               >
                 Cancel
               </button>
@@ -310,6 +310,7 @@ className="w-8 h-8 transform scale-200 bg-[#009688] rounded-full shadow flex ite
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 }

@@ -29,7 +29,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "app/myreports/testreport/page.jsx"  ],
   "exclude": [
     "node_modules"
   ]

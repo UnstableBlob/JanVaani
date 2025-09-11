@@ -18,7 +18,7 @@ export default function ReportStatus() {
   return (
     <div className="max-w-md mx-auto min-h-screen bg-white font-mulish flex flex-col">
       {/* Header */}
-      <div className="flex items-center justify-between p-4 relative">
+      {/* <div className="flex items-center justify-between p-4 relative">
         <Image src={logo} alt="Logo" className="w-10 object-contain" />
         <PlaceholderAvatar />
         <span
@@ -28,7 +28,7 @@ export default function ReportStatus() {
               "linear-gradient(to right, rgba(247,136,10,1) 0%, rgba(255,255,255,1) 50%, rgba(26,143,62,1) 100%)",
           }}
         />
-      </div>
+      </div> */}
 
 
       <main className="flex-grow px-4 pt-4 pb-20">
@@ -86,7 +86,7 @@ export default function ReportStatus() {
         </section>
       </main>
 
-      {/* Bottom Navigation Bar */}
+      {/* Bottom Navigation Bar
           
             <div className="sticky bottom-5 left-0 w-full max-w-xs mx-auto px-1 py-1 flex justify-between items-center z-20 bg-[linear-gradient(to_right,_rgba(247,_136,_10,_1)_0%,_rgba(255,_255,_255,_1)_50%,_rgba(26,_143,_62,_1)_100%)] rounded-full shadow">
               <div className="w-full max-w-sm mx-auto px-4 py-2 bg-white flex justify-between items-center z-20 rounded-full shadow">
@@ -98,7 +98,7 @@ export default function ReportStatus() {
                 <FaBell className="text-black" style={{ width: '30px', height: '30px' }} />
                 <FaUser className="text-black" style={{ width: '30px', height: '30px' }} />
               </div>
-            </div>
+            </div> */}
           </div> 
   );
 }
