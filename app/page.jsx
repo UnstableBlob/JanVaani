@@ -282,6 +282,12 @@ export default function CivicIssueReportingApp() {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
+            <input
+                  className="w-full border border-black p-2 rounded "
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                />
 
             <VoiceAssistant/>
 
