@@ -36,6 +36,109 @@ const PlaceholderSpinner = () => (
   <div className="w-5 h-5 border-4 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
 );
 
+const ReportDetails = () => {
+  <div className="max-w-md mx-auto bg-white font-mulish flex flex-col">
+      {/* Header */}
+      {/* <div className="flex items-center justify-between p-4 relative">
+        <Image src={logo} alt="Logo" className="w-10 object-contain" />
+        <PlaceholderAvatar />
+        <span
+          className="absolute bottom-0 left-0 right-0 h-[2px]"
+          style={{
+            background:
+              "linear-gradient(to right, rgba(247,136,10,1) 0%, rgba(255,255,255,1) 50%, rgba(26,143,62,1) 100%)",
+          }}
+        />
+      </div> */}
+
+
+      <main className="flex-grow px-4 pt-4 pb-20">
+        {/* Report Title and Meta */}
+        <section>
+          <h2 className="text-2xl font-extrabold text-gray-900">Pothole near main road</h2>
+          <div className="flex space-x-2 text-xs text-gray-500 mt-1">
+            <span>9 mins ago</span>
+            <span>12:31 PM</span>
+          </div>
+          <p className="text-base text-gray-700 mt-1">Club Road, Ranchi</p>
+
+          {/* Image placeholder */}
+          <div className="mt-4 rounded-lg h-40 w-full bg-gray-200 flex items-center justify-center text-gray-500 text-lg">
+            Image
+          </div>
+        </section>
+
+        {/* Progress Tracker */}
+        <nav className="mt-6 px-2">
+          <div className="flex items-center">
+            <div className="w-5 h-5 rounded-full border-4 border-indigo-600 bg-indigo-600"></div>
+            <div className="flex-1 h-1.5 bg-gray-300 mx-3 rounded"></div>
+            <div className="w-5 h-5 rounded-full border-4 border-gray-300 bg-gray-200"></div>
+            <div className="flex-1 h-1.5 bg-gray-300 mx-3 rounded"></div>
+            <div className="w-5 h-5 rounded-full border-4 border-gray-300 bg-gray-200"></div>
+          </div>
+          <div className="flex justify-between text-sm mt-1 px-1">
+            <span className="text-indigo-600 font-semibold">Sent</span>
+            <span className="text-gray-400">Acknowledgement</span>
+            <span className="text-gray-400">Resolved</span>
+          </div>
+        </nav>
+
+        {/* Status Descriptions
+        <section className="mt-8 space-y-6 text-gray-700 text-base">
+          <div>
+            <p className="font-bold text-gray-900">Sent</p>
+            <p className="mt-1">
+              Your report has been submitted successfully and shared with the municipal team.
+            </p>
+          </div>
+          <div>
+            <p className="font-bold text-gray-900">Acknowledgement</p>
+            <p className="mt-1">
+              The concerned department has reviewed your report and assigned it for action.
+            </p>
+          </div>
+          <div>
+            <p className="font-bold text-gray-900">Resolved</p>
+            <p className="mt-1">
+              The problem has been fixed. Thank you for helping improve your community!
+            </p>
+          </div>
+        </section> */}
+      </main>
+
+      {/* Bottom Navigation Bar */}
+          
+            {/* <div className="sticky bottom-5 left-0 w-full max-w-xs mx-auto px-1 py-1 flex justify-between items-center z-20 bg-[linear-gradient(to_right,_rgba(247,_136,_10,_1)_0%,_rgba(255,_255,_255,_1)_50%,_rgba(26,_143,_62,_1)_100%)] rounded-full shadow">
+              <div className="w-full max-w-sm mx-auto px-4 py-2 bg-white flex justify-between items-center z-20 rounded-full shadow">
+                <FaHome className="text-black" style={{ width: '30px', height: '30px' }} />
+                <IoAlertCircleSharp className="text-black" style={{ width: '30px', height: '30px' }} />
+                <div className="w-8 h-8 transform scale-200 bg-[#009688] rounded-full shadow flex items-center justify-center">
+                 <CiMedicalCross className="text-white" />
+                </div>
+                <FaBell className="text-black" style={{ width: '30px', height: '30px' }} />
+                <FaUser className="text-black" style={{ width: '30px', height: '30px' }} />
+              </div>
+            </div> */}
+          </div> 
+
+        {/* Progress Tracker */}
+        <nav className="mt-6 px-2">
+          <div className="flex items-center">
+            <div className="w-5 h-5 rounded-full border-4 border-indigo-600 bg-indigo-600"></div>
+            <div className="flex-1 h-1.5 bg-gray-300 mx-3 rounded"></div>
+            <div className="w-5 h-5 rounded-full border-4 border-gray-300 bg-gray-200"></div>
+            <div className="flex-1 h-1.5 bg-gray-300 mx-3 rounded"></div>
+            <div className="w-5 h-5 rounded-full border-4 border-gray-300 bg-gray-200"></div>
+          </div>
+          <div className="flex justify-between text-sm mt-1 px-1">
+            <span className="text-indigo-600 font-semibold">Sent</span>
+            <span className="text-gray-400">Acknowledgement</span>
+            <span className="text-gray-400">Resolved</span>
+          </div>
+        </nav>
+};
+
 export default function Myreports() {
   const [issues, setIssues] = useState([]);
   const [showForm, setShowForm] = useState(false);
@@ -124,6 +227,9 @@ export default function Myreports() {
     }
   };
 
+    const [department, setDepartment] = useState("");
+  
+
   const router = useRouter();
   return (
     <div className="w-full mx-auto bg-white min-h-screen rounded shadow-md flex flex-col relative">
@@ -196,7 +302,7 @@ export default function Myreports() {
             onClick={() => router.push('/')}
             className="text-black" style={{ width: "30px", height: "30px" }} />
             <IoAlertCircleSharp 
-            onclick={() => router.push('/myreports')}
+            onClick={() => router.push('/myreports')}
             className="text-black" style={{ width: "30px", height: "30px" }} />
             <div
               onClick={() => setShowForm(true)}
@@ -210,7 +316,7 @@ export default function Myreports() {
         </div>
         {/* Report Modal */}
               {showForm && (
-                <div className="absolute inset-0 bg-[#00000000] bg-opacity-40 flex items-center justify-center z-30">
+                <div className="absolute inset-0 bg-[#00000000] bg-opacity-40 flex items-center justify-center z-50">
                   <div className="bg-white p-6 rounded-lg w-11/12 max-w-md shadow-lg">
                     <h2 className="text-lg text-black font-bold mb-4">Create Report</h2>
         
@@ -228,12 +334,20 @@ export default function Myreports() {
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
                     />
-                    <input
+                    {/* <input
                           className="w-full border border-black p-2 rounded "
                           type="file"
                           accept="image/*"
                           onChange={handleFileChange}
-                        />
+                        /> */}
+                        {/* ✅ Camera + Gallery */}
+                      <input
+                        className="w-full border border-black p-2 rounded"
+                        type="file"
+                        accept="image/*"
+                        capture="environment"
+                        onChange={handleFileChange}
+                      />
         
                     <VoiceAssistant/>
         
@@ -245,7 +359,19 @@ export default function Myreports() {
                       />
                     )}
         
-                    <div className="flex justify-center gap-2">
+                    
+                    <select
+                        className="w-full border border-black p-2 mb-3 rounded text-black"
+                        value={department}
+                        onChange={e => setDepartment(e.target.value)}
+                      >
+                        <option value="">Select Department</option>
+                        <option value="1">Department 1</option>
+                        <option value="2">Department 2</option>
+                        <option value="3">Department 3</option>
+                        <option value="4">Department 4</option>
+                      </select>
+                      <div className="flex justify-center gap-2 pb-4 ">
                       <button
                         onClick={() => setShowForm(false)}
                         className="px-4 py-2 bg-gray-300 rounded text-black"

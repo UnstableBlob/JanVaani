@@ -21,7 +21,7 @@ const PlaceholderAvatar = () => (
 
 const PotholeReportCard = () => (
     
-    <div className="max-w-xl mx-auto bg-gray-100 rounded-2xl shadow-lg p-6 space-y-6 text-black relative">
+    <div className="max-w-lg min max-h-screen mx-auto bg-gray-100 rounded-2xl shadow-lg p-6 text-black relative">
     {/* Close Icon top right */}
     <button className="absolute top-4 right-4 text-black w-10 h-10"
     onClick={() => setShowForm(false)}>
@@ -236,7 +236,9 @@ const router = useRouter();
             </button>
             {isOpen && (
               <div className="ml-6 flex flex-col gap-1 text-sm">
-                <a className="hover:underline cursor-pointer">Department 1</a>
+                <a 
+                onClick={() => router.push('/admin/department1')}
+                className="hover:underline cursor-pointer">Department 1</a>
                 <a className="hover:underline cursor-pointer">Department 2</a>
                 <a className="hover:underline cursor-pointer">Department 3</a>
                 <a className="hover:underline cursor-pointer">Department 4</a>

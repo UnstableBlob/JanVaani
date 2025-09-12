@@ -101,6 +101,8 @@ export default function CivicIssueReportingApp() {
     setPreview(URL.createObjectURL(file));
   };
 
+  const [department, setDepartment] = useState("");
+
   // const handleVoiceInput = () => {
   //   const recognition = new (window.SpeechRecognition ||
   //     window.webkitSpeechRecognition)();
@@ -204,7 +206,7 @@ export default function CivicIssueReportingApp() {
       </div> */}
 
       {/* Map Placeholder */}
-      <div className="px-4 mb-3 pt-4">
+      <div className="px-4 mb-3 pt-4 z-30">
         <MapContainer center={[23.3441, 85.3096]} zoom={13} scrollWheelZoom={false} className="w-full h-48 md:h-64 rounded-lg border border-gray-400">
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -278,7 +280,7 @@ export default function CivicIssueReportingApp() {
 
       {/* Report Modal */}
       {showForm && (
-        <div className="absolute inset-0 bg-[#00000000] bg-opacity-40 flex items-center justify-center z-30">
+        <div className="absolute inset-0 bg-[#00000000] bg-opacity-40 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-lg w-11/12 max-w-md shadow-lg">
             <h2 className="text-lg text-black font-bold mb-4">Create Report</h2>
 
@@ -296,12 +298,20 @@ export default function CivicIssueReportingApp() {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
-            <input
+            {/* <input
                   className="w-full border border-black p-2 rounded "
                   type="file"
                   accept="image/*"
                   onChange={handleFileChange}
-                />
+                /> */}
+                {/* ✅ Camera + Gallery */}
+              <input
+                className="w-full border border-black p-2 rounded"
+                type="file"
+                accept="image/*"
+                capture="environment"
+                onChange={handleFileChange}
+              />
 
             <VoiceAssistant/>
 
@@ -313,23 +323,36 @@ export default function CivicIssueReportingApp() {
               />
             )}
 
-            <div className="flex justify-center gap-2">
-              <button
-                onClick={() => setShowForm(false)}
-                className="px-4 py-2 bg-gray-300 rounded text-black"
+
+            <select
+                className="w-full border border-black p-2 mb-3 rounded text-black"
+                value={department}
+                onChange={e => setDepartment(e.target.value)}
               >
-                Cancel
-              </button>
-              <button
-                onClick={handleSubmit}
-                className="px-4 py-2 bg-green-500 text-white rounded"
-              >
-                Submit
-              </button>
-            </div>
+                <option value="">Select Department</option>
+                <option value="1">Solid Waste Management Department</option>
+                <option value="2">Public Works Department</option>
+                <option value="3">Electricity Department</option>
+                <option value="4">Water Supply Department</option>
+              </select>
+              <div className="flex justify-center gap-2 pb-4 ">
+                      <button
+                        onClick={() => setShowForm(false)}
+                        className="px-4 py-2 bg-gray-300 rounded text-black"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        onClick={handleSubmit}
+                        className="px-4 py-2 bg-green-500 text-white rounded"
+                      >
+                        Submit
+                      </button>
+                    </div>
           </div>
         </div>
       )}
+
     </div>
     </div>
   );

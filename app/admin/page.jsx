@@ -63,7 +63,9 @@ const router = useRouter();
             </button>
              {isOpen && (
             <div className="flex flex-col gap-1 text-sm bg-blue-500 rounded p-2">
-              <a className="hover:underline cursor-pointer">Department 1</a>
+              <a
+              onClick={() => router.push('/admin/department1')}
+              className="hover:underline cursor-pointer">Department 1</a>
               <a className="hover:underline cursor-pointer">Department 2</a>
               <a className="hover:underline cursor-pointer">Department 3</a>
               <a className="hover:underline cursor-pointer">Department 4</a>
