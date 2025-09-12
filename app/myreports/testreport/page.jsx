@@ -5,6 +5,8 @@ import { FaSearch,FaMicrophone,FaBell,FaUser, FaHome} from "react-icons/fa";
 import { FaCircleCheck } from "react-icons/fa6";
 import { IoAlertCircleSharp } from "react-icons/io5";
 import { CiMedicalCross } from "react-icons/ci";
+import issueimage1 from "../../../images/issue1.png";
+import issueimage2 from "../../../images/issue2.jpg";
 
 
 
@@ -14,7 +16,7 @@ const PlaceholderAvatar = () => (
   </div>
 );
 
-export default function ReportStatus() {
+export default function ReportStatus() { 
   return (
     <div className="max-w-md mx-auto bg-white font-mulish flex flex-col">
       {/* Header */}
@@ -43,7 +45,7 @@ export default function ReportStatus() {
 
           {/* Image placeholder */}
           <div className="mt-4 rounded-lg h-40 w-full bg-gray-200 flex items-center justify-center text-gray-500 text-lg">
-            Image
+            <Image src={issueimage1} alt="Issue" className="h-full w-full object-cover rounded-lg"/>
           </div>
         </section>
 

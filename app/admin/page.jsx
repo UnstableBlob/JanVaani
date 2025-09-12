@@ -133,7 +133,7 @@ const router = useRouter();
             Recent notifications
           </div>
           <div className="bg-[#99E1AF] rounded-lg p-10 flex items-center justify-center font-semibold text-lg text-center">
-            Recent notifications
+            Department
           </div>
         </div>
       </main>

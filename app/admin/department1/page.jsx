@@ -72,10 +72,10 @@ export default function Department1Page() {
             </button>
             {isOpen && (
               <div className="ml-6 flex flex-col gap-1 text-sm mt-1">
-                <a className="bg-blue-500 px-3 py-1 rounded cursor-pointer">Department 1</a>
-                <a className="hover:underline cursor-pointer">Department 2</a>
-                <a className="hover:underline cursor-pointer">Department 3</a>
-                <a className="hover:underline cursor-pointer">Department 4</a>
+                <a className="bg-blue-500 px-3 py-1 rounded cursor-pointer">Solid Waste Management</a>
+                <a className="hover:underline cursor-pointer">Public Works Dept.</a>
+                <a className="hover:underline cursor-pointer">Electricity Dept.</a>
+                <a className="hover:underline cursor-pointer">Water Supply Dept.</a>
               </div>
             )}
           </div>
@@ -92,7 +92,7 @@ export default function Department1Page() {
         {/* Header */}
         <div className="flex items-center justify-between mb-7">
           <div className="flex items-center gap-3">
-            <span className="font-bold text-2xl">Department 1</span>
+            <span className="font-bold text-2xl">Solid Waste Management</span>
           </div>
           <div className="flex gap-2 text-gray-600 mr-5">
             <button className="hover:underline">Sort by</button>

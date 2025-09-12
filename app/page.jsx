@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from 'next/navigation';
 import logo from "../images/logobig.png";
+import issueimage1 from "../images/issue1.png";
+import issueimage2 from "../images/issue2.jpg";
 import { FaSearch,FaMicrophone,FaBell,FaUser, FaHome} from "react-icons/fa";
 import { FaCircleCheck } from "react-icons/fa6";
 import { IoAlertCircleSharp } from "react-icons/io5";
@@ -238,6 +240,34 @@ export default function CivicIssueReportingApp() {
       <div className="px-4 py-2 flex-1 overflow-auto">
         <div className="rounded-lg shadow border border-black p-3 max-h-[300px] overflow-y-auto">
           <h2 className="font-bold text-lg text-black mb-2">Recent Issues</h2>
+          
+          {/*issue 1*/}
+              <div className="flex items-center mb-3 last:mb-0">
+                <div className="w-12 h-12 bg-gray-200 rounded overflow-hidden flex items-center justify-center">
+                    <Image src={issueimage1} alt="Issue" className="w-full h-full object-cover" />
+                </div>
+              <div className="flex-1 ml-3">
+                <span className="font-bold text-sm text-gray-700">
+                  Pothole near main road
+                </span>
+                <div className="text-xs text-gray-500">9 mins ago 12:31 PM</div>
+              </div>
+                <PlaceholderSpinner />
+            </div>
+            
+            {/*issue 2*/}
+            <div className="flex items-center mb-3 last:mb-0">
+              <div className="w-12 h-12 bg-gray-200 rounded overflow-hidden flex items-center justify-center">
+                    <Image src={issueimage2} alt="Issue" className="w-full h-full object-cover" />
+                </div>
+              <div className="flex-1 ml-3">
+                <span className="font-bold text-sm text-gray-700">
+                  Garbage not collected
+                </span>
+                <div className="text-xs text-gray-500">2 days ago 10:22 AM</div>
+              </div>
+                <FaCircleCheck className="text-[#3C9718]"/>
+            </div>
           {issues.map((issue) => (
             <div className="flex items-center mb-3 last:mb-0" key={issue._id}>
               <PlaceholderIssueImage src={issue.imageUrl} />
