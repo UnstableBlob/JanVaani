@@ -4,7 +4,7 @@ import Image from "next/image";
 import logo from "../../../images/logobig.png";
 import { useRouter } from "next/navigation";
 
-export default function Department1Page() {
+export default function DepartmentPage() {
   const [isOpen, setIsOpen] = useState(true); // Department section open by default
   const router = useRouter();
 
@@ -13,36 +13,36 @@ export default function Department1Page() {
     {
       date: "05 Sept 2025, 10:45 AM",
       engineer: "Amit Kumar",
-      task: "Vivek Desai",
-      contact: "Mr. Rajesh Mehta",
-      select: "", // Optionally, can add checkbox or button
+      task: "Unsegregated Waste at Source",
+      contact: "*******454",
+      select: "",
     },
     {
       date: "06 Sept 2025, 08:20 PM",
       engineer: "Rohit Sharma",
-      task: "Aarti Sharma",
-      contact: "Mr. Anil Kumar",
+      task: "Irregular Collection & Transportation",
+      contact: "*******324",
       select: "",
     },
     {
       date: "07 Sept 2025, 09:15 AM",
       engineer: "Vivek Singh",
-      task: "Vivek Singh",
-      contact: "Mrs. Kavita Rao",
+      task: "Overflowing Bins & Illegal Dumping",
+      contact: "*******123",
       select: "",
     },
     {
       date: "08 Sept 2025, 02:30 PM",
       engineer: "Ajay Patel",
-      task: "Ajay Patel",
-      contact: "Ms. Neha Sinha",
+      task: "Lack of Recycling & Processing",
+      contact: "*******234",
       select: "",
     },
     {
       date: "09 Sept 2025, 07:50 AM",
       engineer: "Sunita Devi",
-      task: "Sunita Devi",
-      contact: "Mr. Suresh Yadav",
+      task: "Inefficient Monitoring & Tracking",
+      contact: "*******879",
       select: "",
     },
   ];
@@ -53,14 +53,35 @@ export default function Department1Page() {
       <aside className="w-72 bg-blue-400 text-white flex flex-col p-4">
         <div className="flex items-center gap-3 mb-8">
           <div className="w-10 h-10 bg-white rounded-md flex items-center justify-center text-blue-500 text-xl">
-            <Image src={logo} alt="Logo" width={40} height={40} className="object-contain" />
+            <Image
+              src={logo}
+              alt="Logo"
+              width={40}
+              height={40}
+              className="object-contain"
+            />
           </div>
           <span className="text-lg font-semibold">JanVaani</span>
         </div>
         <nav className="flex flex-col gap-2">
-          <a onClick={() => router.push('/admin')} className="px-4 py-2 rounded hover:bg-blue-500">Dashboard</a>
-          <a onClick={() => router.push('/admin/analytics')} className="px-4 py-2 rounded hover:bg-blue-500">Analytics</a>
-          <a onClick={() => router.push('/admin/reports')} className="px-4 py-2 rounded hover:bg-blue-500">Reports</a>
+          <a
+            onClick={() => router.push("/admin")}
+            className="px-4 py-2 rounded hover:bg-blue-500"
+          >
+            Dashboard
+          </a>
+          <a
+            onClick={() => router.push("/admin/analytics")}
+            className="px-4 py-2 rounded hover:bg-blue-500"
+          >
+            Analytics
+          </a>
+          <a
+            onClick={() => router.push("/admin/reports")}
+            className="px-4 py-2 rounded hover:bg-blue-500"
+          >
+            Reports
+          </a>
           <div className="relative">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -72,21 +93,42 @@ export default function Department1Page() {
             </button>
             {isOpen && (
               <div className="ml-6 flex flex-col gap-1 text-sm mt-1">
-                <a className="bg-blue-500 px-3 py-1 rounded cursor-pointer">Solid Waste Management</a>
-                <a className="hover:underline cursor-pointer">Public Works Dept.</a>
-                <a className="hover:underline cursor-pointer">Electricity Dept.</a>
-                <a className="hover:underline cursor-pointer">Water Supply Dept.</a>
+                <a
+                  className="hover:bg-blue-500 px-3 py-1 rounded cursor-pointer"
+                  onClick={() => router.push("/admin/department1")}
+                >
+                  Solid Waste Management
+                </a>
+                <a
+                  className="hover:bg-blue-500 px-3 py-1 rounded cursor-pointer"
+                  onClick={() => router.push("/admin/department2")}
+                >
+                  Public Works Dept.
+                </a>
+                <a
+                  className="hover:bg-blue-500 px-3 py-1 rounded cursor-pointer"
+                  onClick={() => router.push("/admin/department3")}
+                >
+                  Electricity Dept.
+                </a>
+                <a
+                  className="hover:bg-blue-500 px-3 py-1 rounded cursor-pointer"
+                  onClick={() => router.push("/admin/department4")}
+                >
+                  Water Supply Dept.
+                </a>
               </div>
             )}
           </div>
           <a className="px-4 py-2 rounded hover:bg-blue-500">Users</a>
           <a className="px-4 py-2 rounded hover:bg-blue-500">Messages</a>
           <a className="px-4 py-2 rounded hover:bg-blue-500">Calendar</a>
-          <a className="px-4 py-2 rounded hover:bg-blue-500">Files</a>
+
           <a className="px-4 py-2 rounded hover:bg-blue-500">Settings</a>
           <a className="px-4 py-2 rounded hover:bg-blue-500">Help & Support</a>
         </nav>
       </aside>
+
       {/* Main Content */}
       <main className="flex-1 py-8 px-8 text-black">
         {/* Header */}
