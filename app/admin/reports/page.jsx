@@ -4,7 +4,8 @@ import Image from "next/image";
 import logo from "../../../images/logobig.png";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoClose } from "react-icons/io5";
-
+import { useRouter } from "next/navigation";
+import { FaSearch, FaMicrophone } from "react-icons/fa";
 
 // Placeholder pothole image; replace with actual Image import
 const potholeImg = "/images/pothole.jpg";
@@ -205,7 +206,7 @@ const SelectEngineers = () => {
 
   const [showForm, setShowForm] = useState(false);
     const [showSelect, setShowSelect] = useState(false);
-
+const router = useRouter();
 
 
   return (
@@ -219,14 +220,15 @@ const SelectEngineers = () => {
           </div>
           <span className="text-lg font-semibold">JanVaani</span>
         </div>
+        
         <nav className="flex flex-col gap-2">
-          <a className="px-4 py-2 rounded hover:bg-blue-500">Dashboard</a>
-          <a className="bg-blue-600 px-4 py-2 rounded font-medium">Analytics</a>
-          <a className="px-4 py-2 rounded hover:bg-blue-500">Reports</a>
+          <a onClick={() => router.push('/admin')} className="px-4 py-2 rounded hover:bg-blue-500">Dashboard</a>
+          <a onClick={() => router.push('/admin/analytics')} className="px-4 py-2 rounded hover:bg-blue-500">Analytics</a>
+          <a onClick={() => router.push('/admin/reports')} className="px-4 py-2 rounded hover:bg-blue-500">Reports</a>
           <div className="relative">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="px-4 py-2 block font-medium bg-blue-500 text-white rounded hover:bg-blue-500 focus:outline-none"
+              className="px-4 py-2 block font-medium text-white rounded hover:bg-blue-500 focus:outline-none"
               aria-haspopup="true"
               aria-expanded={isOpen}
             >
@@ -269,13 +271,16 @@ const SelectEngineers = () => {
       </div>
 
       {/* Search Bar */}
-          <div className="flex-1 items-center justify-between relative pt-8 max-w-xl mx-8">
-            <input
-              className="w-full text-black px-4 py-2 shadow-md border-black rounded border"
-              type="text"
-              placeholder="Search issues"
-            />
-          
+      <div className="px-4 pt-5 mb-3">
+        <div className="flex items-center bg-white rounded-lg shadow border px-3 py-2">
+          <FaSearch className="text-black" />
+          <input
+            className="flex-1 bg-transparent outline-none text-gray-700 text-sm md:text-base"
+            placeholder="Search issues"
+            type="text"
+          />
+          <FaMicrophone className="text-black" />
+        </div>
         <div className=" text-black flex gap-4 mt-4">
           <span className="px-2 py-1 bg-gray-200 rounded text-sm">
             Filter: Category ▼

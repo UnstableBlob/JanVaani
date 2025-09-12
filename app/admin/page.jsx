@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import logo from "../../images/logobig.png";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { useRouter } from 'next/navigation';
 
 
 // Leaflet imports
@@ -30,6 +31,7 @@ const PlaceholderAvatar = () => (
 export default function Dashboard() {
 
 const [isOpen, setIsOpen] = useState(false);
+const router = useRouter();
     
   return (
     <div className="flex min-h-screen bg-gray-100">
@@ -47,20 +49,20 @@ const [isOpen, setIsOpen] = useState(false);
         </div>
         {/* Sidebar Links */}
         <nav className="flex flex-col gap-2">
-          <a className="bg-blue-600 px-4 py-2 rounded font-medium">Dashboard</a>
-          <a className="px-4 py-2 rounded hover:bg-blue-500">Analytics</a>
-          <a className="px-4 py-2 rounded hover:bg-blue-500">Reports</a>
+          <a onClick={() => router.push('/admin')} className="px-4 py-2 rounded font-medium hover:bg-blue-500">Dashboard</a>
+          <a onClick={() => router.push('/admin/analytics')} className="px-4 py-2 rounded hover:bg-blue-500">Analytics</a>
+          <a onClick={() => router.push('/admin/reports')} className="px-4 py-2 rounded hover:bg-blue-500">Reports</a>
           <div className="relative">
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="px-4 py-2 block font-medium bg-blue-500 text-white rounded hover:bg-blue-500 focus:outline-none"
+                className={`px-4 py-2 block font-medium text-white rounded hover:bg-blue-500 focus:outline-none ${isOpen ? 'bg-blue-500' : ''}`}
                 aria-haspopup="true"
                 aria-expanded={isOpen}
             >
                 Departments
             </button>
              {isOpen && (
-            <div className="ml-6 flex flex-col gap-1 text-sm">
+            <div className="flex flex-col gap-1 text-sm bg-blue-500 rounded p-2">
               <a className="hover:underline cursor-pointer">Department 1</a>
               <a className="hover:underline cursor-pointer">Department 2</a>
               <a className="hover:underline cursor-pointer">Department 3</a>

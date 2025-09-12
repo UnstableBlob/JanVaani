@@ -2,13 +2,13 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from 'next/navigation';
-import logo from "../images/logobig.png";
+import logo from "../../images/logobig.png";
 import { FaSearch,FaMicrophone,FaBell,FaUser, FaHome} from "react-icons/fa";
 import { FaCircleCheck } from "react-icons/fa6";
 import { IoAlertCircleSharp } from "react-icons/io5";
 import { CiMedicalCross } from "react-icons/ci";
 import { createClient } from "@supabase/supabase-js";
-import VoiceAssistant from "./components/voiceassistant";
+import VoiceAssistant from "../components/voiceassistant";
 
 // Leaflet imports
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
@@ -224,11 +224,11 @@ export default function CivicIssueReportingApp() {
           className="flex-1 bg-blue-600 text-white py-2 rounded-lg font-semibold shadow text-sm md:text-base"
           onClick={() => setShowForm(true)}
         >
-          Report an issue
+          Report Actions
         </button>
         <button className="flex-1 bg-white border border-gray-300 text-gray-700 py-2 rounded-lg font-semibold shadow text-sm md:text-base"
-        onClick={() => router.push('/myreports')}>
-          My reports
+        onClick={() => router.push('/engineer/reports')}>
+          Assigned Reports
         </button>
       </div>
 
@@ -260,10 +260,10 @@ export default function CivicIssueReportingApp() {
       <div className="sticky bottom-5 left-0 w-full max-w-xs mx-auto px-1 py-1 flex justify-between items-center z-20 bg-[linear-gradient(to_right,_rgba(247,_136,_10,_1)_0%,_rgba(255,_255,_255,_1)_50%,_rgba(26,_143,_62,_1)_100%)] rounded-full shadow">
         <div className="w-full max-w-sm mx-auto px-4 py-2 bg-white flex justify-between items-center z-20 rounded-full shadow">
           <FaHome
-          onClick={() => router.push('/')} 
+          onClick={() => router.push('/engineer')} 
           className="text-black" style={{ width: '30px', height: '30px' }} />
           <IoAlertCircleSharp
-          onClick={() => router.push('/myreports')}
+          onClick={() => router.push('/engineer/reports')}
           className="text-black" style={{ width: '30px', height: '30px' }} />
           <div
             onClick={() => setShowForm(true)}
@@ -276,7 +276,7 @@ export default function CivicIssueReportingApp() {
         </div>
       </div>
 
-      {/* Report Modal */}
+      {/* Report Modal
       {showForm && (
         <div className="absolute inset-0 bg-[#00000000] bg-opacity-40 flex items-center justify-center z-30">
           <div className="bg-white p-6 rounded-lg w-11/12 max-w-md shadow-lg">
@@ -329,7 +329,7 @@ export default function CivicIssueReportingApp() {
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </div>
     </div>
   );

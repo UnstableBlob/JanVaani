@@ -2,9 +2,11 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import logo from "../../../images/logobig.png";
+import { useRouter } from "next/navigation";
 
 export default function Department1Page() {
   const [isOpen, setIsOpen] = useState(true); // Department section open by default
+  const router = useRouter();
 
   // Example data for department table
   const deptRows = [
@@ -56,9 +58,9 @@ export default function Department1Page() {
           <span className="text-lg font-semibold">JanVaani</span>
         </div>
         <nav className="flex flex-col gap-2">
-          <a className="px-4 py-2 rounded hover:bg-blue-500">Dashboard</a>
-          <a className="px-4 py-2 rounded hover:bg-blue-500">Analytics</a>
-          <a className="px-4 py-2 rounded hover:bg-blue-500">Reports</a>
+          <a onClick={() => router.push('/admin')} className="px-4 py-2 rounded hover:bg-blue-500">Dashboard</a>
+          <a onClick={() => router.push('/admin/analytics')} className="px-4 py-2 rounded hover:bg-blue-500">Analytics</a>
+          <a onClick={() => router.push('/admin/reports')} className="px-4 py-2 rounded hover:bg-blue-500">Reports</a>
           <div className="relative">
             <button
               onClick={() => setIsOpen(!isOpen)}

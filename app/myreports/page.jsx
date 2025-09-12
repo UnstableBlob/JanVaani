@@ -10,6 +10,7 @@ import { CiMedicalCross } from "react-icons/ci";
 import { createClient } from "@supabase/supabase-js";
 import ReportStatus from "./testreport/page";
 import VoiceAssistant from "../components/voiceassistant";
+import { useRouter } from "next/navigation";
 
 
 const supabase = createClient(
@@ -123,6 +124,7 @@ export default function Myreports() {
     }
   };
 
+  const router = useRouter();
   return (
     <div className="w-full mx-auto bg-white min-h-screen rounded shadow-md flex flex-col relative">
       {/* Header */}
@@ -186,11 +188,16 @@ export default function Myreports() {
             })}
           </div>
         </div>
+        
         {/* Bottom Navigation Bar */}
         <div className="sticky bottom-5 left-0 w-full max-w-xs mx-auto px-1 py-1 flex justify-between items-center z-20 bg-[linear-gradient(to_right,_rgba(247,_136,_10,_1)_0%,_rgba(255,_255,_255,_1)_50%,_rgba(26,_143,_62,_1)_100%)] rounded-full shadow">
           <div className="w-full max-w-sm mx-auto px-4 py-2 bg-white flex justify-between items-center z-20 rounded-full shadow">
-            <FaHome className="text-black" style={{ width: "30px", height: "30px" }} />
-            <IoAlertCircleSharp className="text-black" style={{ width: "30px", height: "30px" }} />
+            <FaHome 
+            onClick={() => router.push('/')}
+            className="text-black" style={{ width: "30px", height: "30px" }} />
+            <IoAlertCircleSharp 
+            onclick={() => router.push('/myreports')}
+            className="text-black" style={{ width: "30px", height: "30px" }} />
             <div
               onClick={() => setShowForm(true)}
               className="w-8 h-8 transform scale-200 bg-[#009688] rounded-full shadow flex items-center justify-center"
