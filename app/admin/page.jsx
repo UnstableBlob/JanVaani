@@ -6,6 +6,20 @@ import Image from "next/image";
 import logo from "../../images/logobig.png";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useRouter } from "next/navigation";
+import issueimage1 from "../../images/issue1.png";
+import issueimage2 from "../../images/issue2.jpg";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell,
+} from "recharts";
 
 // Leaflet imports
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
@@ -27,9 +41,29 @@ const PlaceholderAvatar = () => (
   </div>
 );
 
+
+
 export default function Dashboard() {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
+
+ const reportData = [
+    { name: "Mon", reports: 5 },
+    { name: "Tue", reports: 8 },
+    { name: "Wed", reports: 12 },
+    { name: "Thu", reports: 6 },
+    { name: "Fri", reports: 15 },
+    { name: "Sat", reports: 10 },
+    { name: "Sun", reports: 4 },
+  ];
+
+  const pieData = [
+    { name: "Resolved", value: 65 },
+    { name: "Pending", value: 25 },
+    { name: "In Progress", value: 10 },
+  ];
+
+  const COLORS = ["#00C49F", "#FF8042", "#0088FE"];
 
   return (
     <div className="flex min-h-screen bg-gray-100">
@@ -68,7 +102,7 @@ export default function Dashboard() {
           <div className="relative">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="bg-blue-600 px-4 py-2 block font-medium text-white rounded focus:outline-none"
+              className="hover:bg-blue-500 px-4 py-2 block font-medium text-white rounded focus:outline-none"
               aria-haspopup="true"
               aria-expanded={isOpen}
             >
@@ -156,18 +190,64 @@ export default function Dashboard() {
         </div>
 
         {/* Dashboard Boxes */}
-        <div className="grid grid-cols-2 gap-8 max-w-3xl mx-auto text-black">
-          <div className="bg-[#99E1AF] rounded-lg p-10 flex items-center justify-center font-semibold text-lg text-center">
-            Analytics - last week (graph)
+        <div className="flex-1 gap-8 max-w-3xl mx-auto text-black">
+          <div className="bg-[#99E1AF] rounded-lg p-2 flex items-center justify-center font-semibold text-lg text-center">
+            {/* Graphs Section */}
+                    <div className="flex items-center justify-center w-full">
+                      {/* Bar Chart */}
+                      <div className="bg-white shadow rounded-xl p-2 text-black w-full">
+                        <h3 className="text-gray-600 font-semibold mb-4">
+                          Reports per Day
+                        </h3>
+                        <ResponsiveContainer width="100%" height={250}>
+                          <BarChart data={reportData}>
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="name" />
+                            <YAxis />
+                            <Tooltip />
+                            <Bar dataKey="reports" fill="#4F46E5" radius={[5, 5, 0, 0]} />
+                          </BarChart>
+                        </ResponsiveContainer>
+                      </div>
+            
+                    </div>
           </div>
           <div className="bg-[#99E1AF] rounded-lg p-10 flex items-center justify-center font-semibold text-lg text-center">
-            Reports - what's today
+            <div className="overflow-x-auto "> Recent Reports
+            <table className="min-w-full text-left text-black">
+              <tbody>
+                  <tr className="hover:bg-gray-50"
+                  onClick={() => setShowForm1(true)}>
+                    <td className="py-2 px-4">9 mins ago 12:31 PM</td>
+                    <td className="py-2 px-4">Vivek Desai</td>
+                    <td className="py-2 px-4 flex items-center gap-2">
+                      <Image src={issueimage1} alt="" width={36} height={36} className="rounded shadow-sm" />
+                      <div>
+                        <div className="font-semibold">Pothole near Main Road</div>
+                        <div className="text-xs text-gray-500">Club Road, Ranchi</div>
+                      </div>
+                    </td>
+                    <td className="py-2 px-4">Public Works Department</td>
+                    <td className="py-2 px-4">Mr. Saurav Das</td>
+                  </tr>
+                  <tr className="hover:bg-gray-50"
+                  onClick={() => setShowForm2(true)}>
+                    <td className="py-2 px-4">2 days ago10:22 AM</td>
+                    <td className="py-2 px-4">Vivek Desai</td>
+                    <td className="py-2 px-4 flex items-center gap-2">
+                      <Image src={issueimage2} alt="" width={36} height={36} className="rounded shadow-sm" />
+                      <div>
+                        <div className="font-semibold">Garbage not collected</div>
+                        <div className="text-xs text-gray-500">Rathod Street, Ranchi</div>
+                      </div>
+                    </td>
+                    <td className="py-2 px-4">Solid Waste Management</td>
+                    <td className="py-2 px-4">Ms.	Simran Kaur</td>
+                  </tr>
+              </tbody>
+            </table>
+
           </div>
-          <div className="bg-[#99E1AF] rounded-lg p-10 flex items-center justify-center font-semibold text-lg text-center">
-            Recent notifications
-          </div>
-          <div className="bg-[#99E1AF] rounded-lg p-10 flex items-center justify-center font-semibold text-lg text-center">
-            Department
           </div>
         </div>
       </main>

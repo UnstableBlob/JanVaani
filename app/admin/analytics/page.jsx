@@ -78,7 +78,7 @@ export default function Department1Page() {
           <div className="relative">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="bg-blue-600 px-4 py-2 block font-medium text-white rounded focus:outline-none"
+              className="hover:bg-blue-500 px-4 py-2 block font-medium text-white rounded focus:outline-none"
               aria-haspopup="true"
               aria-expanded={isOpen}
             >
@@ -152,7 +152,7 @@ export default function Department1Page() {
         {/* Graphs Section */}
         <div className="grid grid-cols-2 gap-6">
           {/* Bar Chart */}
-          <div className="bg-white shadow rounded-xl p-6">
+          <div className="bg-white shadow rounded-xl p-6 text-black">
             <h3 className="text-gray-600 font-semibold mb-4">
               Reports per Day
             </h3>
@@ -196,7 +196,7 @@ export default function Department1Page() {
         </div>
 
         {/* Progress Section */}
-        <div className="bg-white shadow rounded-xl p-6">
+        <div className="bg-white shadow rounded-xl p-6 text-black ">
           <h3 className="text-gray-600 font-semibold mb-4">
             Department Performance
           </h3>
